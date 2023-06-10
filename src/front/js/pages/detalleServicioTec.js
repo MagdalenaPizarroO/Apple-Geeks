@@ -34,10 +34,18 @@ export const DetallesServicioTec = props => {
             const region = item.region;
             const comunas = item.comunas.join(", ");
 
-            return (
-                <div key={index}>
-                    <span>{`${region}: ${comunas}. `}</span>
-                </div>);
+            if (region === "Todo Chile") {
+                return (
+                    <span key={index}>Todo Chile</span>
+
+                )
+            } else {
+
+                return (
+                    <div key={index}>
+                        <span>{`${region}: ${comunas}. `}</span>
+                    </div>);
+            }
         });
 
         return (
@@ -55,7 +63,7 @@ export const DetallesServicioTec = props => {
             {/* Arriba */}
             <div className="text-center mt-5">
                 <h2>{detalleServicioTec.titulo}</h2>
-                <h3>Precio: {detalleServicioTec.precio}</h3>
+                <h3>Precio: {`$${detalleServicioTec?.precio?.toLocaleString('es-ES', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}`}</h3>
             </div>
             {/* Izquierda */}
             <div className="mx-5 row">
